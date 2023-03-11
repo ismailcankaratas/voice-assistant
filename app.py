@@ -72,16 +72,16 @@ def createImage(text):
     params:
         text (str):
     """
-    print(text + " resmi oluşturuluyor...")
+    print("AI: " + text + " resmi oluşturuluyor...")
     response = generateImage(text)
     prefix = "aiApp"
-    for index, image in enumerate(response["images"]):
-        file_name = f'{prefix}_{str(random.randint(0,999))}.jpg'
-        with open(file_name, "wb") as f:
-            f.write(b64decode(image))
-            image = Image.open(file_name)
-            image.show()
-            print("AI: Resim oluşturuldu!")
+    image = response["images"][0]
+    file_name = f'{prefix}_{str(random.randint(0,999))}.jpg'
+    with open(file_name, "wb") as f:
+        f.write(b64decode(image))
+        image = Image.open(file_name)
+        image.show()
+        print("AI: Resim oluşturuldu!")
 
 def completion(text):
     print("İsteğiniz işleniyor...")
