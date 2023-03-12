@@ -5,7 +5,7 @@ from base64 import b64decode
 from openai.error import InvalidRequestError
 from PIL import Image
 
-API_KEY = "YOUR_OPENAI_API_KEY"
+API_KEY = "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"
 
 openai.api_key = API_KEY
 
