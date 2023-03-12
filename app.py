@@ -1,15 +1,11 @@
-import playsound
-import speech_recognition as sr
+import playsound, speech_recognition as sr, random, os, openai
 from gtts import gTTS
-import random
-import os
-import datetime
+from datetime import datetime
 from base64 import b64decode
-import openai
 from openai.error import InvalidRequestError
 from PIL import Image
 
-API_KEY = YOUR_OPENIA_API_KEY
+API_KEY = "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"
 
 openai.api_key = API_KEY
 
@@ -63,7 +59,7 @@ def generateImage(prompt, num_image=2, size="512x512", output_format="b64_json")
         elif output_format == "b64_json":
             for image in response["data"]:
                 images.append(image.b64_json)
-        return {"created": datetime.datetime.fromtimestamp(response["created"]), "images": images}
+        return {"created": datetime.fromtimestamp(response["created"]), "images": images}
     except InvalidRequestError as e: 
         print(e)
 
